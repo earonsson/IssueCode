@@ -35,7 +35,7 @@ while ($row = $result->fetch_assoc()) {
 // Räkna ut antal rader i databasen
 
 $count_rows = count($data);
-
+echo(json_encode(data));
 
 // CLOSE CONNECTION
 mysqli_close($mysqli);

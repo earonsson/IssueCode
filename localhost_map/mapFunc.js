@@ -3,28 +3,10 @@ var markers = [];
 var map;
 
 
-//lägg in markers i arrayen markes
-function addMarkers(marker){
-  //  alert("hej");
-
-    markers.push(marker);
-    alert(markers);
-}
 
 
 
 function initialize() {
-
-//hämta datan från databasen här.
-   // var count_rows = <?php echo json_encode($count_rows); ?>;
-   // alert(count_rows);
-
- //   var data= <?php echo json_encode($data[0][5]); ?>;
-
-
-
-
-
 
 
 
@@ -146,19 +128,35 @@ function initialize() {
     ;
 
     //-----------FUNKTION FÖR ATT PLACERA UT MARKER MANUELLT---------------
+    var markersArray = [];
     google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
+        document.getElementById("latFld").value = event.latLng.lat();
+        document.getElementById("lngFld").value = event.latLng.lng();
     });
 
     function placeMarker(location) {
+        // first remove all markers if there are any
+        deleteOverlays();
+
         var marker = new google.maps.Marker({
             position: location,
             map: map,
-            draggable:true
+            draggable :true
         });
+
+        markersArray.push(marker);
 
     }
 
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    }
 
 }
 
@@ -222,6 +220,8 @@ function initialize() {
 function getPicture(index){
         return markers[index][4];
 }
+
+
 
 
 //--------------------------------------------------------------------------

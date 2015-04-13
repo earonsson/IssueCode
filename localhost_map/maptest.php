@@ -32,7 +32,7 @@ if (mysqli_connect_errno()) {
 $query = "SELECT * FROM report";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
-
+print_r($result);
 // Tom array som ska fyllas med arrayer som motsvarar rader i databasen
 $data = array();
 
@@ -41,42 +41,26 @@ $data = array();
 
 while ($row = $result->fetch_assoc()) {
 
-array_push($data,array_values($row));
+    array_push($data,array_values($row));
 }
 
 // Räkna ut antal rader i databasen
 
 $count_rows = count($data);
 
-print_r($count_rows);
-
+//echo $data;
+print_r(json_encode($data)[0][0]);
 // CLOSE CONNECTION
 mysqli_close($mysqli);
 
-echo "hej";
 ?>
 
 <script>
-
-
-    var marker = [];
+    var data= JSON.parse( <?php echo json_encode($data); ?>);
 
     var count_rows = <?php echo json_encode($count_rows); ?>;
-    alert("hej");
-    var data =<?php echo json_encode($data, JSON_FORCE_OBJECT); ?>;
-    alert(data);
-    //  for (i = 0; i < count_rows; i++) {
-    // var test = data[i][0];
-    //alert(test);
-    // alert(i);
-    // var lati =<?php echo json_encode($data[0][0]); ?>;
-    // alert(lati);
-    // var longi= <?php echo json_encode($data[0][1]); ?>;
-    // var myLatlng = new google.maps.LatLng(lati, longi);
-    // marker[0] = myLatlng;
-    //addMarkers(marker);
-    //  alert("hej");
-    // }
+    alert(count_rows);
+
 
 
 </script>
