@@ -41,7 +41,6 @@ print_r($count_rows);
 // CLOSE CONNECTION
 mysqli_close($mysqli);
 
-echo "hej";
 ?>
 
 <script>
