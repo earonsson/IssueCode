@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 $query = "SELECT * FROM report";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
-
+print_r($result);
 // Tom array som ska fyllas med arrayer som motsvarar rader i databasen
 $data = array();
 
@@ -36,7 +36,6 @@ while ($row = $result->fetch_assoc()) {
 
 $count_rows = count($data);
 
-print_r($count_rows);
 
 // CLOSE CONNECTION
 mysqli_close($mysqli);
@@ -45,7 +44,8 @@ mysqli_close($mysqli);
 
 <script>
 
-    var data= <?php echo json_encode($data[0][5]); ?>;
+    var data= <?php echo json_encode($data, JSON_FORCE_OBJECT); ?>;
+    alert(data);
     var count_rows = <?php echo json_encode($count_rows); ?>;
 
 </script>
