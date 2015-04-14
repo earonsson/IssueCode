@@ -15,6 +15,9 @@
 
 </head>
 <?php
+
+
+
 // CONNECT TO THE DATABASE
 $DB_NAME = 'Reporting';
 $DB_HOST = '';
@@ -22,13 +25,18 @@ $DB_USER = 'root';
 $DB_PASS = '';
 
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+$mysqli->set_charset("utf8"); // <--------- Ska tillåta åäö.
+$mysqli->query('SET NAMES utf8');
 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
 
+
+
 // Mata ut en händelse från databasen
+
 $query = "SELECT * FROM report";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
@@ -55,15 +63,6 @@ mysqli_close($mysqli);
 
 ?>
 
-<script>
-    var data= JSON.parse( <?php echo json_encode($data); ?>);
-
-    var count_rows = <?php echo json_encode($count_rows); ?>;
-    alert(count_rows);
-
-
-
-</script>
 <body>
     <div id ="checkboxes">
         <form action="">
