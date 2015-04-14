@@ -2,15 +2,10 @@
 var markers = [];
 var map;
 
-<<<<<<< HEAD
-function initialize() {
-
-=======
 
 function initialize() {
 
 
->>>>>>> origin/master
 //-----------------------------SKAPAR KARTA OCH LAMPA 1---------------------------------
     var marker1 = [];
 
