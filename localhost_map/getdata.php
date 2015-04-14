@@ -41,27 +41,31 @@ $data = array();
 
 // Skapa en array beståendes av arrayer som motsvarar varje rad i basabasen
 
-while ($row = $result->fetch_assoc()) {
 
-    array_push($data,array_values($row));
+
+if (mysqli_num_rows($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        $data[] = $row;
+        //array_push($data,array_values($row));
+
+    }
 }
-
 // Räkna ut antal rader i databasen
 
+//print_r($data);
 $count_rows = count($data);
 
+print_r(json_encode($data));
 
-echo json_encode($data);
+//print_r(gettype($data));
 
 // CLOSE CONNECTION
 
 mysqli_close($mysqli);
 
 
-
-
 ?>
-
 
 
 
