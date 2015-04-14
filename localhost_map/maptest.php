@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head> <meta charset="UTF-8">
 
+    <link type="text/css" href="mapStyle.css" rel="stylesheet">
+
+    </link>
+    <script src="jquery-1.11.2.js"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMbQF_U346cDNgBehK5fHOVi9rby-Bak4">
+    </script>
+
+    <script type="text/javascript" src="mapFunc.js">
+    </script>
+
+</head>
 <?php
 // CONNECT TO THE DATABASE
 $DB_NAME = 'Reporting';
 $DB_HOST = '';
 $DB_USER = 'root';
-$DB_PASS = 'root';
+$DB_PASS = '';
 
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
@@ -36,19 +48,33 @@ while ($row = $result->fetch_assoc()) {
 
 $count_rows = count($data);
 
-
+//echo $data;
+print_r(json_encode($data)[0][0]);
 // CLOSE CONNECTION
 mysqli_close($mysqli);
 
 ?>
 
 <script>
+    var data= JSON.parse( <?php echo json_encode($data); ?>);
 
-    var data= <?php echo json_encode($data, JSON_FORCE_OBJECT); ?>;
-    alert(data);
     var count_rows = <?php echo json_encode($count_rows); ?>;
+    alert(count_rows);
+
+
 
 </script>
+<body>
+    <div id ="checkboxes">
+        <form action="">
+            <input checked type ="checkbox" name ="category" value ="Lampor" onclick="switchCheckbox(this)"> Lampanmälningar <br>
+            <input checked type ="checkbox" name ="category" value ="Roads" onclick="switchCheckbox(this)"> Vägproblem
+
+        </form>
+
+        </div>
+    <div id="map-canvas"></div>
+
 
 </body>
 </html>

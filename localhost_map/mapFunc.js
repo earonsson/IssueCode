@@ -2,8 +2,15 @@
 var markers = [];
 var map;
 
+<<<<<<< HEAD
 function initialize() {
 
+=======
+
+function initialize() {
+
+
+>>>>>>> origin/master
 //-----------------------------SKAPAR KARTA OCH LAMPA 1---------------------------------
     var marker1 = [];
 
@@ -118,18 +125,45 @@ function initialize() {
     ;
 
     //-----------FUNKTION FÖR ATT PLACERA UT MARKER MANUELLT---------------
+    var markersArray = [];
     google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
+        document.getElementById("latFld").value = event.latLng.lat();
+        document.getElementById("lngFld").value = event.latLng.lng();
+
     });
 
+
+
     function placeMarker(location) {
+        // first remove all markers if there are any
+        deleteOverlays();
+
         var marker = new google.maps.Marker({
             position: location,
             map: map,
-            draggable:true
+            draggable :true
         });
 
+        markersArray.push(marker);
+        google.maps.event.addListener(marker, 'drag', function(event) {
+
+            document.getElementById("latFld").value = event.latLng.lat();
+            document.getElementById("lngFld").value = event.latLng.lng()
+
+        })
+
     }
+
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    }
+
 
 
 }
@@ -191,9 +225,11 @@ function initialize() {
         return markers[index][3];
     }
 
-function getPicture(index){
-        return markers[index][4];
-}
+    function getPicture(index){
+            return markers[index][4];
+    }
+
+
 
 
 //--------------------------------------------------------------------------
