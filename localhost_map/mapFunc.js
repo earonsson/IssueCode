@@ -2,15 +2,10 @@
 var markers = [];
 var map;
 
-<<<<<<< HEAD
-function initialize() {
-
-=======
 
 function initialize() {
 
 
->>>>>>> origin/master
 //-----------------------------SKAPAR KARTA OCH LAMPA 1---------------------------------
     var marker1 = [];
 
@@ -236,5 +231,21 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+$(document).ready(function() {
+
+
+    var jsonData;
+
+    $.ajax({
+        method: 'GET',
+        url: 'getdata.php',
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+        }
+
+
+    });
+});
 
 

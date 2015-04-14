@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head> <meta charset="UTF-8">
 
-    <link type="text/css" href="mapStyle.css" rel="stylesheet">
-
-    </link>
-    <script src="jquery-1.11.2.js"></script>
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMbQF_U346cDNgBehK5fHOVi9rby-Bak4">
-    </script>
-
-    <script type="text/javascript" src="mapFunc.js">
-    </script>
-
-</head>
-<body>
 
 <?php
 // CONNECT TO THE DATABASE
@@ -56,7 +40,7 @@ if (mysqli_num_rows($result)) {
 //print_r($data);
 $count_rows = count($data);
 
-print_r(json_encode($data));
+
 
 //print_r(gettype($data));
 
@@ -64,25 +48,5 @@ print_r(json_encode($data));
 
 mysqli_close($mysqli);
 
-
+echo json_encode($data);
 ?>
-
-
-
-
-
-
-
-
-<div id ="checkboxes">
-    <form action="">
-        <input checked type ="checkbox" name ="category" value ="Lampor" onclick="switchCheckbox(this)"> Lampanmälningar <br>
-        <input checked type ="checkbox" name ="category" value ="Roads" onclick="switchCheckbox(this)"> Vägproblem
-
-    </form>
-
-</div>
-<div id="map-canvas"></div>
-
-</body>
-</html>
