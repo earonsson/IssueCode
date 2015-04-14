@@ -3,15 +3,7 @@ var markers = [];
 var map;
 
 
-
-
-
 function initialize() {
-
-
-
-
-
 
 
 //-----------------------------SKAPAR KARTA OCH LAMPA 1---------------------------------
@@ -149,7 +141,7 @@ function initialize() {
         });
 
         markersArray.push(marker);
-        google.maps.event.addListener(marker, 'dragend', function(event) {
+        google.maps.event.addListener(marker, 'drag', function(event) {
 
             document.getElementById("latFld").value = event.latLng.lat();
             document.getElementById("lngFld").value = event.latLng.lng()
