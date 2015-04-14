@@ -220,9 +220,9 @@ function initialize() {
         return markers[index][3];
     }
 
-function getPicture(index){
-        return markers[index][4];
-}
+    function getPicture(index){
+            return markers[index][4];
+    }
 
 
 
