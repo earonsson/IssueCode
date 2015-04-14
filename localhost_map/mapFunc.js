@@ -133,7 +133,10 @@ function initialize() {
         placeMarker(event.latLng);
         document.getElementById("latFld").value = event.latLng.lat();
         document.getElementById("lngFld").value = event.latLng.lng();
+
     });
+
+
 
     function placeMarker(location) {
         // first remove all markers if there are any
@@ -146,6 +149,12 @@ function initialize() {
         });
 
         markersArray.push(marker);
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+
+            document.getElementById("latFld").value = event.latLng.lat();
+            document.getElementById("lngFld").value = event.latLng.lng()
+
+        })
 
     }
 
@@ -157,6 +166,8 @@ function initialize() {
             markersArray.length = 0;
         }
     }
+
+
 
 }
 
