@@ -43,6 +43,10 @@
       <file leaf-file-name="mapFunc.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/localhost_map/mapFunc.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state vertical-scroll-proportion="0.18072289" vertical-offset="1550" max-vertical-offset="4114">
+              <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+=======
 <<<<<<< Updated upstream
             <state vertical-scroll-proportion="0.34819278" vertical-offset="2040" max-vertical-offset="4114">
               <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
@@ -50,6 +54,7 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="2848" max-vertical-offset="3585">
               <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
 >>>>>>> Stashed changes
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
@@ -477,6 +482,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/localhost_map/getdata.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.18072289" vertical-offset="1550" max-vertical-offset="4114">
+          <caret line="100" column="21" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
+=======
 <<<<<<< Updated upstream
         <state vertical-scroll-proportion="0.34819278" vertical-offset="2040" max-vertical-offset="4114">
           <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
@@ -494,6 +503,7 @@
         <state vertical-scroll-proportion="0.5890603" vertical-offset="0" max-vertical-offset="713">
           <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
 >>>>>>> Stashed changes
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
