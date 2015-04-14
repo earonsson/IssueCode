@@ -231,6 +231,21 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+$(document).ready(function() {
 
+
+    var jsonData;
+
+    $.ajax({
+        method: 'GET',
+        url: 'getdata.php',
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+        }
+
+
+    });
+});
 
 
