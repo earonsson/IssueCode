@@ -174,7 +174,7 @@ function initialize(markers) {
     function addmarkerArray(markerData, list){
         for(var i =0; i <markerData.length; i++) {
             markerData[i].contentstring = '<div id="content">' +
-            '<h1 >' + markerData[i].Category + '</h1>' + '<h2> ' + markerData[i].title + '</h2>' +
+            '<h1 >' + markerData[i].Category + '</h1>'  +
             '<div id="bodyContent">' +
             '<p>' + markerData[i].Description + '<br><br><img id="thumbnail" src="' + markerData[i].Picture + '"> </p>' +
             '</div>' +
