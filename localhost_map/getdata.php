@@ -5,7 +5,7 @@
 $DB_NAME = 'Reporting';
 $DB_HOST = '';
 $DB_USER = 'root';
-$DB_PASS = 'root';
+$DB_PASS = '';
 
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
@@ -49,4 +49,6 @@ $count_rows = count($data);
 mysqli_close($mysqli);
 
 echo json_encode($data);
+
+
 ?>
