@@ -188,13 +188,17 @@ function initialize(markers) {
             var infowindow = new google.maps.InfoWindow({
                 content: markerData[i].contentstring + '<img src="toolsIcon.png" width="40px" height="40px">'
             });
-            var icon = '';
-            if (markerData[i].Category == "lampor") {
+            var icon = markerData[i].Category + ".png";
+          /*  if (markerData[i].Category == "lampor") {
                 icon = 'lamp.png';
             }
             if (markerData[i].Category == "Roads") {
                 icon = 'traffic.png';
             }
+*/
+
+
+
 
 
             var marker = new google.maps.Marker({
