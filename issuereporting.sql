@@ -7,6 +7,7 @@ Use Reporting;
 
 CREATE TABLE IF NOT EXISTS `report` (
   `ID` int(11) NOT NULL,
+  `Title` varchar(20) NOT NULL,
   `Category` varchar(20) NOT NULL,
   `Longitude` float8 NOT NULL,
   `Latitude` float8 NOT NULL,
@@ -28,12 +29,12 @@ ALTER TABLE `report`
 
 
 INSERT INTO `report`
-(`ID`, `Category`, `Longitude`, `Latitude`, `Timestamp`, `Status`, `Pers_name`, `Pers_email`, `Description`, `Picture`) VALUES 
-(NULL, 'lampor',17.6389270,59.8585640, current_timestamp(),'Unfixed','selma','sel@gmail.com','sonder','bild1'),
-(NULL, 'lampor',17.5922220, 59.8501940, current_timestamp(),'Unfixed','selma','sel@gmail.com','krossad','bild2'),
-(NULL, 'lampor',7.6727530, 590.8755150, current_timestamp(),'Unfixed','leife','leife@msn.com','trasig','bild3');
+(`ID`, `Title`, `Category`, `Longitude`, `Latitude`, `Timestamp`, `Status`, `Pers_name`, `Pers_email`, `Description`, `Picture`) VALUES 
+(NULL, 'Sonderslagen belysning', 'Lampor',17.6389270,59.8585640, current_timestamp(),'Unfixed','Selma','sel@gmail.com','sonder blabla','bild1'),
+(NULL, 'Sonderslagen belysning','Lampor',17.5922220, 59.8501940, current_timestamp(),'Unfixed','Selma','sel@gmail.com','krossad blabla','bild2'),
+(NULL, 'Sonderslagen belysning','Lampor',7.6727530, 590.8755150, current_timestamp(),'Unfixed','Leife','leife@msn.com','trasig blabla','bild3');
 
 
 Select * from Report;
 
- drop database reporting;
+-- drop database reporting;
