@@ -2,111 +2,118 @@
 var markers = [];
 var map;
 
-//--------------------- SKAPAR MARKERS FRÅN DATABASEN ----------------------------------------
-    function addmarkerArray(markerData, list){
-        for(var i =0; i <markerData.length; i++) {
-            markerData[i].contentstring = '<div id="content">' +
-            '<h1 >' + markerData[i].Category + '</h1>'  +
-            '<div id="bodyContent">' +
-            '<p>' + markerData[i].Description + '<br><br><img id="thumbnail" src="' + markerData[i].Picture + '"> </p>' +
-            '</div>' +
-            '</div>';
-            var myLatlng2 = new google.maps.LatLng(59.8629080, 17.6143430);
-            markerData[i].postion = new google.maps.LatLng(markerData[i].Latitude, markerData[i].Longitude);
+//--------------------- SKAPAR MARKERSARRAYEN FRÅN DATABASEN ----------------------------------------
 
-            var infowindow = new google.maps.InfoWindow({
-                content: markerData[i].contentstring + '<img src="toolsIcon.png" width="40px" height="40px">'
-            });
-            var icon = markerData[i].Category + ".png";
-            var marker = new google.maps.Marker({
-                position: markerData[i].postion,
+function createMarkerArray(markerData,markersTemp) {
+    for (var i = 0; i < markerData.length; i++) {
+        var currentMarker = [];
+        currentMarker.latitude = markerData[i].Latitude;
+        currentMarker.longitude = markerData[i].Longitude;
+        currentMarker.description = markerData[i].Description;
+        currentMarker.category = markerData[i].Category;
+        currentMarker.picture = markerData[i].Picture;
+        currentMarker.title = markerData[i].title;
+        markersTemp.push(currentMarker); // Detta lägger in markern som objekt i array kallad markers som kan kommas åt överallt
+    }
+}
 
 
-                map: map,
-                icon: icon,
-                title: markerData[i].contentstring,
-                animation: google.maps.Animation.DROP
-            });
-            markerData[i].marker = marker;
+//------------------------SKAPAR INFOWINDOW-------------------------------------------------
+function createInfoWindow() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].contenString = '<div id="content">' +
+        '<h1 >' + markers[i].category + '</h1>' +
+        '<div id="bodyContent">' +
+        '<p>' + markers[i].description + '<br><br><img id="thumbnail" src="' + markers[i].picture + '"> </p>' +
+        '</div>' +
+        '</div>';
+    }
+}
 
+//------------------------SÄTTER UT MARKERS FRÅN ARRAYEN TILL KARTAN-----------------------------
+function markersToMap() {
+        for (var i = 0; i < markers.length; i++) {
+                markers[i].postion = new google.maps.LatLng(markers[i].latitude, markers[i].longitude);
 
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent(this.title);
-                infowindow.open(map, this);
+                var infowindow = new google.maps.InfoWindow({
+                    content: markers[i].contenString
+                });
 
-            });
+                var icon = markers[i].category + ".png"; //För att en marker ska få rätt ikon efter kategori måste bildfilen heta sin kategori och vara i png-format.
+                var newMarker = new google.maps.Marker({
+                    position: markers[i].postion,
+                    map: map,
+                    icon: icon,
+                    title: markers[i].contenString,
+                    animation: google.maps.Animation.DROP
+                });
 
+                markers[i].marker = newMarker; // markers.marker kommer åt googlemaps-markern som objekt, tex markers[index].marker.setMap(null)
 
-            var currentMarker = [];
-            currentMarker.Description = markerData[i].Description;
-            currentMarker.marker = markerData[i].marker;
-            currentMarker.Category = markerData[i].Category;
-            currentMarker.contentstring = markerData[i].contentstring;
-            currentMarker.title = markerData[i].title;
-            list.push(currentMarker);
+                google.maps.event.addListener(newMarker, 'click', function () {
+                    infowindow.setContent(this.title);
+                    infowindow.open(map, this);
 
-        }
-        };
+                });
+            }
 
+    }
 
+//-------------------SIDAN LADDAS OCH SKAPAR EN MAP -----------------------------
 
-
-//--------------------------------------------------------------------------
-
-
-//-------------------SIDAN LADDAS -----------------------------
-
-function onloading() {
-    // KARTAN LADDAS IN
-    var mapCenter = new google.maps.LatLng(59.858056, 17.644722);
-    var mapOptions = {
-        center: mapCenter,
-        zoom: 13,
-        scrollwheel: false
-    };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+        function onloading() {
+            // KARTAN LADDAS IN
+            var mapCenter = new google.maps.LatLng(59.858056, 17.644722);
+            var mapOptions = {
+                center: mapCenter,
+                zoom: 13,
+                scrollwheel: false
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
 
 
 //-------------HÄMTAR JSON OBJEKT--------------------------------------------------------------
 
-    $.ajax({
-        type: "GET",
-        url: "getdata.php",
-        dataType: "json",
-        success: function (data) {
-            addmarkerArray(data, markers);
+            $.ajax({
+                type: "GET",
+                url: "getdata.php",
+                dataType: "json",
+                success: function (data) {
+                    createMarkerArray(data, markers);
+                    createInfoWindow();
+                    markersToMap();
+                }
+            });
         }
-    });
-};
-
 
 //-------------------------- ÖVRIGA FUNKTIONER--------------------------------------
 
-function hideCategory(category) {
-    for (i = 0; i < markers.length; i++) {
-        if (markers[i].Category == category) {
-            markers[i].marker.setMap(null);
+        function hideCategory(category) {
+            for (i = 0; i < markers.length; i++) {
+                if (markers[i].category == category) {
+                    markers[i].marker.setMap(null);
+                }
+            }
         }
-    }
-}
 
-function showCategory(category) {
-    for (i = 0; i < markers.length; i++) {
-        if (markers[i].Category == category) {
-            markers[i].marker.setMap(map);
+        function showCategory(category) {
+            for (i = 0; i < markers.length; i++) {
+                if (markers[i].category == category) {
+                    markers[i].marker.setMap(map);
+                }
+            }
         }
-    }
-}
 
-function switchCheckbox(checkBox){
-    if(checkBox.checked){
-        showCategory(checkBox.value);
-    }
-    else{
-        hideCategory(checkBox.value);
-    }
-}
+        function switchCheckbox(checkBox) {
+            if (checkBox.checked) {
+                showCategory(checkBox.value);
+            }
+            else {
+                hideCategory(checkBox.value);
+            }
+        }
+
 
 
 //-----------FUNKTION FÖR ATT PLACERA UT MARKER MANUELLT---------------
