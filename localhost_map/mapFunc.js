@@ -2,6 +2,38 @@
 var markers = [];
 var map;
 
+//-------------------SIDAN LADDAS OCH SKAPAR EN MAP -----------------------------
+
+function onloading() {
+    // KARTAN LADDAS IN
+    var mapCenter = new google.maps.LatLng(59.858056, 17.644722);
+    var mapOptions = {
+        center: mapCenter,
+        zoom: 12,
+        scrollwheel: false,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.LARGE,
+            position: google.maps.ControlPosition.RIGHT_CENTER
+        }
+    };
+    map = new google.maps.Map(document.getElementById('map-container'),
+        mapOptions);
+
+//-------------HÄMTAR JSON OBJEKT--------------------------------------------------------------
+
+    $.ajax({
+        type: "GET",
+        url: "http://stsitkand.student.it.uu.se/issuereporting/IssueReportingMongo.php",
+        dataType: "json",
+        success: function (data) { console.log(data);
+            createMarkerArray(data, markers);
+            createInfoWindow();
+            markersToMap();
+
+        }
+    });
+}
+
 //--------------------- SKAPAR MARKERSARRAYEN FRÅN DATABASEN ----------------------------------------
 
 function createMarkerArray(markerData,markersTemp) {
@@ -59,33 +91,7 @@ function markersToMap() {
 
     }
 
-//-------------------SIDAN LADDAS OCH SKAPAR EN MAP -----------------------------
 
-        function onloading() {
-            // KARTAN LADDAS IN
-            var mapCenter = new google.maps.LatLng(59.858056, 17.644722);
-            var mapOptions = {
-                center: mapCenter,
-                zoom: 13,
-                scrollwheel: false
-            };
-            map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-
-
-//-------------HÄMTAR JSON OBJEKT--------------------------------------------------------------
-
-            $.ajax({
-                type: "GET",
-                url: "getdata.php",
-                dataType: "json",
-                success: function (data) {
-                    createMarkerArray(data, markers);
-                    createInfoWindow();
-                    markersToMap();
-                }
-            });
-        }
 
 //-------------------------- ÖVRIGA FUNKTIONER--------------------------------------
 
