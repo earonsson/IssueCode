@@ -1,0 +1,170 @@
+#header-container{
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #1f548e;
+}
+
+#top{
+    width: 75%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
+
+#kommunLogga{
+    max-height: 100%;
+    float: left;
+}
+
+#topMenu{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#topMenu div{
+    position: relative;
+    width: 20%;
+    height: 90%;
+    margin-left:4%;
+    float: left;
+}
+
+.rubriker{
+    position: absolute;
+    bottom: 5%;
+    font-size: 20px;
+    font-family: Arial;
+    height:20%;
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.searchbar{
+    float: right;
+}
+
+#border-container{
+    position: absolute;
+    top: 10%;
+    left: 0px;
+    height: 2%;
+    width: 100%;
+}
+.gulkant{
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    height:100%;
+    width: 75%;
+    background-color:#FFCC00;
+}
+
+#map{
+    background-image: url("http://vb.uppsala.se/PageFiles/4281/kartbild_redigerad-1.jpg");
+    position: absolute;
+    top: 12%;
+    left: 0px;
+    width:100%;
+    height:88%;
+    overflow: auto;
+    //border: 1px solid black;
+}
+
+#checkLeft{
+    float: left;
+    width:21%;
+    height:100%;
+    overflow: auto;
+    position: relative;
+    background-color: rgba(255,255,255,0.4);
+}
+
+thead{
+    font-weight: bold;
+    font-size: 18pt;
+    background-color: rgba(255,255,255,0.6);
+
+}
+
+#checkTable{
+    font-family: arial;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255,255,255,0.3);
+    color: gray;
+
+}
+
+.header{
+    cursor: pointer;
+    font-family: Arial;
+    font-size:14pt;
+    background-color: rgba(255,255,255,0.3);
+}
+
+td{
+    padding: 15px
+}
+
+.child-{
+    font-family:Arial;
+    font-size: 11pt;
+}
+
+tr:hover{
+    background-color: rgba(255,255,255,0.9);
+}
+
+
+
+#widgetsMain{
+    width:100%;
+    height:33%;
+    top: 67%;
+    left: 0px;
+    //border: 1px solid black;
+    position: absolute;
+    overflow: auto;
+}
+
+.widget{
+    height: 100%;
+    width: 100%;
+    border: 1px;
+    //background-color: rgba(255,255,255,0.4);
+
+}
+
+#issueList{
+    display: none;
+    overflow: auto;
+    position: absolute;
+}
+
+.infoLista {
+    margin: 0;
+    font-family: arial;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255,255,255,0.3);
+    color: gray;
+}
+
+.infoLista td {
+    alignment: center;
+    cursor: pointer;
+    width: 25%;
+    border: solid 1px black;
+    padding: 7px 10px 10px 10px;
+    text-align: left;
+}
+
+.infoLista tr:hover {
+    background-color: rgba(255,255,255,0.9);
+}
+

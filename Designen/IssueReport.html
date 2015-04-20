@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Issue report</title>
+    <link type="text/css" rel="stylesheet" href="IssueReport.css">
+    <script src="jquery-1.11.1_.js"></script>
+    <script src="issueScript.js"></script>
+
+
+
+</head>
+
+<body>
+<div id="header-container">
+    <header id="top">
+
+        <img id="kommunLogga" src="https://www.uppsala.se/Content/Images/logo_neg.png" alt="Uppsala kommuns logotyp">
+
+        <div id="topMenu" role="navigation">
+            <div><a class="rubriker" href="anvsida_.html">Map</a></div>
+            <div><a class="rubriker" href="IssueReport.html">Issues</a></div>
+            <div><a class="rubriker" href="IssueReport.html">Contact</a></div>
+            <div><a class="rubriker" href="IssueReport.html">Language</a></div>
+        </div>
+
+        <form class="searchbar">
+            <input type="text" class="searchbar knapp" value="Seach on Uppsala.se"/>
+        </form>
+
+    </header>
+</div>
+
+<div id="border-container">
+    <div class="gulkant">
+    </div>
+</div>
+
+<div id="map">
+    <div id="checkLeft">
+        <table id="checkTable">
+            <thead>
+                <tr>
+                    <th width="100%"> Alternatives </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr class="header" id="1"> <td colspan="1">Areas</td> </tr>
+                <tr id="falhagen" class="child-1"> <td>Fålhagen</td> </tr>
+                <tr class="child-1"> <td>Kåbo</td> </tr>
+                <tr class="child-1"> <td>Stenhagen</td> </tr>
+                <tr class="child-1"> <td>Svartbäcken</td> </tr>
+
+                <tr class="header" id="2"> <td colspan="1">Issues</td> </tr>
+                <tr class="child-2"> <td>Belysning</td> </tr>
+                <tr class="child-2"> <td>Cykelpumpar</td> </tr>
+                <tr class="child-2"> <td>Vägar</td> </tr>
+
+                <tr class="header" id="3"> <td colspan="1">Issue Reporting</td> </tr>
+                <tr class="child-3"> <td>Ongoing issues</td> </tr>
+                <tr class="child-3"> <td>Current events</td> </tr>
+                <tr class="child-3"> <td>Points of interest</td> </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="widgetsMain">
+    <div class="widget" id="issueList">
+        <table class="infoLista"></table>
+    </div>
+
+</div>
+
+</body>
+</html>
